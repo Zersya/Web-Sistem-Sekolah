@@ -1,21 +1,62 @@
-<div id='container-login'>
-  <img class='image' src="<?php echo base_url('images/Trigonometri.png'); ?>"/>
-  <div class='body'>
-    <h1 align='center'>Login</h1>
-    <form action="<?php echo base_url('index.php/login/aksi_login'); ?>" method="POST">
-      <a>Username : <br>
-        <input type="text" name='username' placeholder="Masukan Username"><br><br>
-      Password :<br></a>
-        <input type="password" name='password' placeholder="Masukan Password"><br><br>
-        <input type='submit' name="submit" value="Login" style="width : 80px; height : 30px;">
-    </form>
-  </div>
-</div>
+<html>
+  <head>
+    <title>Login</title>
+  </head>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 
+  <script>
+  var base_url = "<?php echo base_url('index.php'); ?>"
+    $().ready(function(){
+      $('#FormInput').submit(function(e){
+        e.preventDefault();
+        $.ajax({
+          'type': 'POST',
+          'url': base_url+"/login/aksi_login",
+          'data': $(this).serialize(),
+          'success': function(data){
+            if(data == "LoginGuru"){
+              window.location=base_url+"/guruutama";
+            }
+            else{
+              $('#notif').html(data);
+            }
+          }
+        });
+      });
+    });
+  </script>
+
+  <body>
+    <div id='container-login'>
+      <img class='image' src="<?php echo base_url('images/Trigonometri.png'); ?>"/>
+      <div class='body'>
+        <h1 align='center'>Login Guru</h1>
+        <form id='FormInput'>
+          <a>Username : <br>
+            <input type="text" name='username' placeholder="Masukan Username"><br><br>
+          Password :<br>
+            <input type="password" name='password' placeholder="Masukan Password"><br><br>
+            <input id='submit' type='submit' value="Login" style="width : 80px; height : 30px;">
+        </form>
+        <div id='notif' style="text-align: center;"></div>
+      </div>
+    </div>
+  </body>
+</html>
 <style type='text/css'>
 
   body{
     background-color: #ecf0f1;
+  }
+  select{
+    margin: 3px;
+    padding: 3px 8px;
+    background-color: #ecf0f1;
+    color: #515151;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Tahoma;
   }
 
   #container-login .image{

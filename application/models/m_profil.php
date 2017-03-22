@@ -7,11 +7,23 @@
     function scan_profil($query){
       return $this->db->query($query);
     }
-    function setNis($nis){
-      $this->session->set_flashdata('nis', $nis);
+    function setNi($ni){
+      $this->session->set_flashdata('ni', $ni);
     }
-    function getNis(){
-      return $this->session->nis;
+    function getNi(){
+      return $this->session->ni;
+    }
+    function setNama($nama){
+      $this->session->set_flashdata('nama', $nama);
+    }
+    function getNama(){
+      return $this->session->nama;
+    }
+    function setFoto($foto){
+      $this->session->set_flashdata('foto', $foto);
+    }
+    function getFoto(){
+      return $this->session->foto;
     }
   }
 

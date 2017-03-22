@@ -82,6 +82,10 @@
         <td colspan="2"><div class="line-separator"></div></td>
       </tr>
       <tr>
+        <td>Lampirkan Foto</td>
+        <td><input type="file" name="foto" value="Browse" accept="image/*"></td>
+      </tr>
+      <tr>
         <td>Lampirkan Ijazah</td>
         <td><input type="file" name="ijazah" value="Browse" accept="image/*, .pdf"></td>
       </tr>

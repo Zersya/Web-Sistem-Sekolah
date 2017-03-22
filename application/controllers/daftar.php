@@ -29,9 +29,26 @@
       $nilaiUNBing = $this->input->post('nilaiUNBING');
 
       if(isset($_POST['submit'])){
-        
+
       }
     }
+
+    function uploading(){
+      $config['upload_path']    = './images/';
+      $config['allowed_types']   = 'jpg|png';
+      $config['max_size']       = '550';
+
+      $this->load->library('upload', $config);
+      if(!$this->upload->do_upload('userfile')){
+        echo $this->upload->display_errors();
+      }else{
+        $data = array('upload_data' => $this->upload->data() );
+        $link = base_url('images/'.$this->upload->data('file_name'));
+
+        return $link;
+      }
+    }
+
   }
 
 

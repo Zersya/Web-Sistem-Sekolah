@@ -11,42 +11,38 @@ class Login extends CI_Controller
   }
   function index(){
     $this->load->view('v_login');
-    if($this->session->flashdata('failed_msg')){
-      echo "<script>alert('Username dan Password tidak cocok !');</script>";
-    }
   }
 
   function aksi_login(){
-
-    if(empty($this->input->post('username')) && empty($this->input->post('password'))){
-      echo "<script>
-      alert('Harap isi Kolom Username dan Password');
-      window.location.href='".base_url('index.php/login')."';
-      </script>";
+    if(empty($this->input->post('username')) || empty($this->input->post('password'))){
+      echo "Harap isi Username dan Password";
     }else{
-
       $username = $this->input->post('username');
       $password = $this->input->post('password');
 
       $where = array(
-        'username_murid' => $username,
-        'password_murid' => $password
+        'username_guru' => $username,
+        'password_guru' => $password
       );
 
-      $cek = $this->m_login->cek_login("akun_murid", $where)->num_rows();
+      $cek = $this->m_login->cek_login("akun_guru", $where);
 
-      if($cek > 0){
-    			$data_session = array(
-    				'nama' => $username,
-    				'status' => "login"
-    			);
-    			$this->session->set_userdata($data_session);
-          redirect(base_url('index.php/muridutama'));
-    	}else{
-        $this->session->set_flashdata('failed_msg', 'failed');
-        redirect(base_url('index.php/login'));
-    	}
+      if($cek->num_rows() > 0){
+        foreach ($cek->result() as $row) {
+          $nip = $row->nip;
+        }
+        $data_session = array(
+          'nip' => $nip,
+          'status' => "login"
+        );
+        $this->session->set_userdata($data_session);
+        echo "LoginGuru";
+        // echo $this->session->nis;
+      }else{
+        echo "Username dan Password tidak Cocok";
+      }
     }
   }
 }
- ?>
+
+?>
