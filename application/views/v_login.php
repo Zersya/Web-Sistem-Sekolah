@@ -5,7 +5,7 @@
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 
   <script>
-  var base_url = "<?php echo base_url('index.php'); ?>"
+  var base_url = "<?php echo base_url('index.php'); ?>";
     $().ready(function(){
       $('#FormInput').submit(function(e){
         e.preventDefault();

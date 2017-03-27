@@ -6,7 +6,6 @@
 
 <body>
 
-  <?php echo form_open_multipart('artikel/posting');?>
   <div id='content'>
     <table border="0">
     <form method="post" action="<?php //echo base_url('index.php/artikel/uploading'); ?>">

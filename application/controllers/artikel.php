@@ -38,7 +38,7 @@ class Artikel extends CI_Controller
   }
 
   function uploading(){
-    $config['upload_path']    = './images/';
+    $config['upload_path']    = './images/artikel/';
     $config['allowed_types']   = 'jpg|png';
     $config['max_size']       = '550';
 
