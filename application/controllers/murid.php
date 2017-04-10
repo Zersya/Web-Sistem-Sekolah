@@ -25,7 +25,19 @@
     }
 
     function aksi_edit(){
+      $nis    = $this->input->post('nis');
+      $data   = array(
+        'Nama_murid'      => $this->input->post('nama'),
+        'angkatan_murid'  => $this->input->post('angkatan'),
+        'agama_murid'     => $this->input->post('agama'),
+        'alamat_murid'    => $this->input->post('alamat'),
+        'wali_murid'      => $this->input->post('wali')
+      );
+      $update = $this->m_murid->updateMurid($nis, $data);
 
+      if($update){
+        redirect(base_url('./index.php/murid/'));
+      }
     }
   }
 

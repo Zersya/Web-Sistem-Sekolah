@@ -17,6 +17,11 @@
 
       return $this->db->get()->result();
     }
+
+    function updateMurid($nis, $value){
+      $this->db->where('nis', $nis);
+      return $this->db->update('murid', $value);
+    }
   }
 
  ?>
