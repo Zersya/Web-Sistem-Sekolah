@@ -20,17 +20,22 @@
       </div>
     </div>
     <div id="welcomeContainer" class="login">
-        <a href="<?php echo base_url('index.php/login'); ?>">Login</a>
+        <a href="<?php echo base_url('index.php/loginGuru'); ?>">Login Guru</a>
+        <a><b>|</a></b>
+        <a href="<?php echo base_url('index.php/loginMurid'); ?>">Login Murid</a>
     </div>
-    <!-- <div id="welcomeContainer" class="daftar">
+    <div id="welcomeContainer" class="daftar">
         <a href="<?php echo base_url('index.php/daftar'); ?>">Mendaftar Sekolah</a>
-    </div> -->
+    </div>
 </body>
 
 <style type='text/css'>
 
 body {
-  background-color: #ecf0f1;
+  /*background-color: #ecf0f1;*/
+  background-image: url('<?php echo base_url('css/bgmain.png');?>');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 h2 {
@@ -60,7 +65,7 @@ a {
   text-align: center;
   position: absolute;
   z-index: 1;
-  top: 50%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -45%);
 }

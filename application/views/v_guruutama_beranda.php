@@ -1,9 +1,9 @@
-<?php if($this->session->status){ ?>
+<?php if($this->session->statusGuru){ ?>
 
 <head>
 <title>Halaman Utama</title>
 </head>
-<link rel='stylesheet' type="text/css" href='<?php echo base_url('css/style.css');?>'/>
+<link rel='stylesheet' type="text/css" href='<?php echo base_url('css/guruUtama_style.css');?>'/>
 <body>
   <div id='container-side'>
     <div id='side'>

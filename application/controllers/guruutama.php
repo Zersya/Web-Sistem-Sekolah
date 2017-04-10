@@ -34,7 +34,7 @@
       $this->session->unset_userdata($data);
       $this->session->sess_destroy();
 
-      redirect(base_url('index.php/login'));
+      redirect(base_url('index.php/loginGuru'));
     }
   }
 

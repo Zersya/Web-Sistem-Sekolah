@@ -58,7 +58,7 @@
         echo $this->upload->display_errors();
       }else{
         $data = array('upload_data' => $this->upload->data() );
-        $link = base_url('images/fotoProfil/murid/'.$dataPath.$this->upload->data('file_name'));
+        $link = base_url('images/fotoProfil/murid/'.$dataPath."/".$this->upload->data('file_name'));
 
         return $link;
       }

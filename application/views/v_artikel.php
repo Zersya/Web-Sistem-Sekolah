@@ -1,14 +1,52 @@
+<?php if($this->session->statusAdmin){?>
 <html>
   <head>
     <title>Input Artikel</title>
   </head>
 </html>
 
+<link rel='stylesheet' type="text/css" href='<?php echo base_url('css/style.css');?>'/>
+<script src='<?php echo base_url('javascript/jquery-3.2.0.min.js');?>'></script>
+
+<script>
+  var base_url = "<?php echo base_url('index.php');?>";
+  $().ready(function(){
+    $('#FormPost').submit(function(e){
+       e.preventDefault();
+       var formData = new FormData($('#FormPost')[0]);
+      $.ajax({
+        'type'    : 'POST',
+        'url'     : base_url+"/artikel/posting",
+        // 'data'    : $(this).serialize(),
+        'data' : formData,
+        contentType : false,
+        processData : false,
+        'success' : function(data){
+            $('.response').html(data);
+        },
+        'error'   : function(){
+            $('.response').html('Isikan Dengan Lengkap');
+        }
+      });
+    });
+  });
+</script>
 <body>
+  <?php //echo form_open_multipart('artikel/posting');?>
+
+  <div id='menu'>
+    <ul>
+      <li><a href='<?php echo base_url('index.php/pendaftar')?>'>Pendaftar</a></li>
+      <li><a  href='<?php echo base_url('index.php/artikel')?>' class='artikel'>Artikel</a></li>
+      <li><a href='<?php echo base_url('index.php/murid')?>'>Murid</a></li>
+      <li><a href='#'>Guru</a></li>
+      <li><a href='<?php echo base_url('index.php/AdminUtama/aksiLogout'); ?>'>Logout</a></li>
+    </ul>
+  </div>
 
   <div id='content'>
     <table border="0">
-    <form method="post" action="<?php //echo base_url('index.php/artikel/uploading'); ?>">
+    <form id='FormPost' method="post" action="<?php //echo base_url('index.php/artikel/posting'); ?>">
       <tr>
         <th><h3>Input Postingan</h3></th>
       </tr>
@@ -33,12 +71,27 @@
           </td>
         </tr>
         <tr>
+            <td colspan="2"><div class="response"></div>
+        </tr>
+        <tr>
           <td colspan="2"><input name='submit' type='submit'value="Post"></td>
         </tr>
       </form>
     </table>
   </div>
+
+
+  <?php }else{ echo "Harap Login Dahulu"; }?>
 <style type='text/css'>
+
+
+#content{
+  position: absolute;
+  left: 50%;
+  top:50%;
+  margin-right: -50%;
+  transform: translate(-50%, 8%);
+}
 
 input[type=text], input[type='file'], textarea, select{
   margin: 3px;
@@ -89,5 +142,4 @@ input[type=submit] {
   transition: all 0.5s ease-in-out;
   cursor: pointer;
 }
-
 </style>

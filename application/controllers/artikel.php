@@ -17,23 +17,29 @@ class Artikel extends CI_Controller
     $this->load->view('v_artikel');
   }
 
+  function viewna(){
+    $view_name = $this->input->post('view_param');
+    $this->load->view($view_name);
+  }
   function posting(){
 
     $judul = $this->input->post('judul');
     $content = $this->input->post('isiartikel');
     $kategori = $this->input->post('kategoriArt');
     if(empty($judul) || empty($content)){
-      echo "<script>
-      alert('Harap Isi dengan Benar');
-      window.location.href='".base_url('index.php/artikel')."';
-      </script>";
+      // echo "<script>
+      // alert('Harap Isi dengan Benar');
+      // window.location.href='".base_url('index.php/artikel')."';
+      // </script>";
+      echo "<b>Harap Isi Dengan Benar";
     }else{
       $gambar = $this->uploading();
       $insert = $this->m_artikel->postArtikel($judul, $content, $gambar, $kategori);
-      echo "<script>
-      alert('Tambah Postingan Berhasil');
-      window.location.href='".base_url('index.php/artikel')."';
-      </script>";
+      // echo "<script>
+      // alert('Tambah Postingan Berhasil');
+      // window.location.href='".base_url('index.php/artikel')."';
+      // </script>";
+      echo "<b>Tambah Posting Berhasil";
     }
   }
 
