@@ -15,7 +15,7 @@
           'data': $(this).serialize(),
           'success': function(data){
             if(data == "LoginAdmin"){
-              window.location=base_url+"/pendaftar";
+              window.location=base_url+"/admin/ke_pendaftar";
             }
             else{
               $('#notif').html(data);

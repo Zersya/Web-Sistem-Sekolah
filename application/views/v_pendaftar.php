@@ -4,15 +4,7 @@
 </head>
 <link rel='stylesheet' type="text/css" href='<?php echo base_url('css/style.css');?>'/>
 <body>
-  <div id='menu'>
-    <ul>
-      <li><a href='<?php echo base_url('index.php/pendaftar')?>'>Pendaftar</a></li>
-      <li><a  href="<?php echo base_url('index.php/artikel')?>" class='artikel'>Artikel</a></li>
-      <li><a href='<?php echo base_url('index.php/murid')?>'>Murid</a></li>
-      <li><a href='#'>Guru</a></li>
-      <li><a href='<?php echo base_url('index.php/AdminUtama/aksiLogout'); ?>'>Logout</a></li>
-    </ul>
-  </div>
+
   <div id='content'>
     <table border='1'>
       <tr>
@@ -31,7 +23,7 @@
         <th>Vertivikasi</th>
       </tr>
     <?php
-      $result = $this->m_pendaftaran->getPendaftar();
+      $result = $this->m_admin->getPendaftar();
       foreach($result->result() as $data){
         echo "<tr>";
         echo "<td>".$data->noDaftar."</td>";
@@ -46,7 +38,7 @@
         echo "<td>".$data->BindUn."</td>";
         echo "<td>".$data->BingAkhir."</td>";
         echo "<td>".$data->BingUn."</td>";
-        echo "<td><a href='./pendaftar/ke_vertifikasi/$data->noDaftar'>Vertivikasi</a></td>";
+        echo "<td><a href='./ke_vertifikasi/$data->noDaftar'>Vertivikasi</a></td>";
         echo "</tr>";
       }
     ?>
@@ -65,18 +57,34 @@ body {
   background-color: #ecf0f1;
 }
 
-
 table {
   border-collapse: collapse;
   top: 20%;
   left: 50%;
   transform: translate(-50%, 0%);
-  width: 80%;
-  position: fixed;
+  width: 90%;
+  position: absolute;
+  font-family: fantasy;
+}
 
+table th{
+  background-color: #5a5a5a;
+  color : white;
+}
+tr{
+  background-color: #fafafa;
+  transition: all 0.2s ease-in-out;
+}
+tr:nth-child(even){
+  background-color: #f2f2f2;
+  transition: all 0.2s ease-in-out;
 }
 
 th, td{
   padding : 4px;
+  border-bottom : 1px solid #000;
+}
 
+tr:hover{
+  background-color: #E4F1FE;
 }
