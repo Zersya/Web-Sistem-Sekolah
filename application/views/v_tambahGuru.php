@@ -10,7 +10,7 @@
   var base_url  = "<?php echo base_url('index.php');?>";
   $(document).ready(function(){
     $('.edit').click(function(){
-      $('#container').load(base_url+"./admin/ke_list");
+      $('#container').load(base_url+"./admin/ke_list_guru");
     })
     $('.tambah').click(function(){
       window.location='./ke_guru';

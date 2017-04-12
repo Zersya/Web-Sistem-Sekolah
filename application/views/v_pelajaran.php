@@ -4,6 +4,37 @@
 </head>
 <link rel='stylesheet' type="text/css" href='<?php echo base_url('css/style.css');?>'/>
 <link rel='stylesheet' type="text/css" href='<?php echo base_url('css/style_1.css');?>'/>
+<script src='<?php echo base_url('javascript/jquery-3.2.0.min.js');?>'></script>
+
+<script>
+  var base_url  = "<?php echo base_url('index.php');?>";
+  $(document).ready(function(){
+    $('.edit').click(function(){
+      $('#container').load(base_url+"./admin/ke_list_pelajaran");
+    })
+    $('.tambah').click(function(){
+      window.location='./ke_pelajaran';
+    })
+    $('#formTambah').submit(function(e){
+       e.preventDefault();
+       var formData = new FormData($('#formTambah')[0]);
+      $.ajax({
+        'type'    : 'POST',
+        'url'     : base_url+"/admin/aksi_tambahPelajaran",
+        'data' : formData,
+        contentType : false,
+        processData : false,
+        'success' : function(data){
+            $('#notif').html(data);
+        },
+        'error'   : function(){
+            $('#notif').html('Isikan Data Dengan Lengkap');
+        }
+      });
+    });
+
+  });
+</script>
 
 <body>
   <div id='content'>
@@ -11,7 +42,7 @@
       <table border='0'>
 
       <?php
-        echo form_open_multipart('./admin/aksi_tambahPelajaran', array('id' => 'formTambah'));
+        echo form_open_multipart('', array('id' => 'formTambah'));
         echo "<tr>";
         echo "<tr><td colspan='2'><h2>Tambah Pelajaran</td></tr>";
         echo "<tr><td>Kode Pelajaran</td><td>".form_input(array('name' => 'kode', 'placeholder' => 'Masukan Kode Pelajaran', 'class' => 'input'))."</td>";

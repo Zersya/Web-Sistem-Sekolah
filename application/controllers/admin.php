@@ -183,7 +183,7 @@ function aksi_vertifikasi(){
           }
         }
 
-        function ke_list(){
+        function ke_list_guru(){
           $guru    = array('guru' => $this->m_admin->listGuru());
 
           $this->load->view('v_listGuru', $guru);
@@ -194,7 +194,7 @@ function aksi_vertifikasi(){
         function ke_editGuru($nip){
           $where  = array('nip' => $nip);
           $data   = $this->m_admin->whereData('guru', $where);
-          $list   = $this->m_admin->listData('pelajaran', '*');
+          $list   = $this->m_admin->arrData('pelajaran', '*');
 
           $dataView = array('data' => $data[0], 'list' => $list);
           $this->load->view('header_admin');
@@ -253,12 +253,14 @@ function aksi_vertifikasi(){
         }
       }
 
+          //pelajaran
       function aksi_tambahPelajaran(){
         $kode       = $this->input->post('kode');
         $nama       = $this->input->post('nama');
         $kurikulum  = $this->input->post('kurikulum');
 
         $data = array(
+            //pelajaran
           'kode_pelajaran'      => $kode,
           'nama_pelajaran'      => $nama,
           'kurikulum_pelajaran' => $kurikulum
@@ -270,5 +272,44 @@ function aksi_vertifikasi(){
           redirect(base_url('index.php/admin/ke_pelajaran'));
         }
       }
+
+    function ke_list_pelajaran(){
+      $pelajaran    = array('pelajaran' => $this->m_admin->listData('pelajaran', '*'));
+
+      $this->load->view('v_listPelajaran', $pelajaran);
+    }
+
+    function hapusPelajaran($kode){
+      $dataBuku = array('kode_pelajaran' => $kode);
+
+      $delete    = $this->m_admin->deleteData('pelajaran', $dataBuku);
+
+      if($delete){
+        redirect(base_url('./index.php/admin/ke_pelajaran'));
+      }
+    }
+
+    function ke_editPelajaran($kode){
+      $where  = array('kode_pelajaran' => $kode);
+      $data   = $this->m_admin->whereData('pelajaran', $where);
+
+      $dataView = array('data' => $data[0]);
+      $this->load->view('header_admin');
+      $this->load->view('v_editPelajaran', $dataView);
+    }
+
+    function aksi_editPelajaran(){
+      $kode    = $this->input->post('kode');
+      $where   = array('kode_pelajaran' => $kode);
+      $data   = array(
+        'nama_pelajaran'  => $this->input->post('nama'),
+        'kurikulum_pelajaran'     => $this->input->post('kurikulum'),
+      );
+      $update = $this->m_admin->updateData($where, $data, 'pelajaran');
+
+      if($update){
+        redirect(base_url('./index.php/admin/ke_pelajaran'));
+      }
+    }
 }
 ?>

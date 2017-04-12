@@ -18,11 +18,19 @@
 
         return $this->db->get()->result();
       }
-      function listData($table, $select){
+
+      function arrData($table,$select){
         $this->db->select($select);
         $this->db->from($table);
 
         return $this->db->get()->result_array();
+      }
+      
+      function listData($table, $select){
+        $this->db->select($select);
+        $this->db->from($table);
+
+        return $this->db->get()->result();
       }
 
       function updateData($pk, $value, $table){
