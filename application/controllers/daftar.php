@@ -8,7 +8,7 @@
     function __construct()
     {
       parent::__construct();
-      $this->load->model('m_pendaftaran');
+      $this->load->model('m_admin');
       $this->load->helper(array('form', 'url'));
     }
 
@@ -37,7 +37,7 @@
         'Ijazah'            => $this->uploading('ijazah',$this->input->post('Nama')),
         'KartuKeluarga'     => $this->uploading('KK',$this->input->post('Nama')),
         );
-        $result = $this->m_pendaftaran->tambahPendaftar($dataPendaftar);
+        $result = $this->m_admin->tambahPendaftar($dataPendaftar);
 
         if($result){
           echo "Data Berhasil Ditambahkan";

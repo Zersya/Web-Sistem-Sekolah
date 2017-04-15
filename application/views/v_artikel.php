@@ -16,7 +16,7 @@
        var formData = new FormData($('#FormPost')[0]);
       $.ajax({
         'type'    : 'POST',
-        'url'     : base_url+"/artikel/posting",
+        'url'     : base_url+"/admin/posting",
         // 'data'    : $(this).serialize(),
         'data' : formData,
         contentType : false,
@@ -32,17 +32,6 @@
   });
 </script>
 <body>
-  <?php //echo form_open_multipart('artikel/posting');?>
-
-  <div id='menu'>
-    <ul>
-      <li><a href='<?php echo base_url('index.php/pendaftar')?>'>Pendaftar</a></li>
-      <li><a  href='<?php echo base_url('index.php/artikel')?>' class='artikel'>Artikel</a></li>
-      <li><a href='<?php echo base_url('index.php/murid')?>'>Murid</a></li>
-      <li><a href='#'>Guru</a></li>
-      <li><a href='<?php echo base_url('index.php/AdminUtama/aksiLogout'); ?>'>Logout</a></li>
-    </ul>
-  </div>
 
   <div id='content'>
     <table border="0">

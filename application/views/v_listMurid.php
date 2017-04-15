@@ -4,15 +4,7 @@
 </head>
 <link rel='stylesheet' type="text/css" href='<?php echo base_url('css/style.css');?>'/>
 <body>
-  <div id='menu'>
-    <ul>
-      <li><a href='<?php echo base_url('index.php/pendaftar')?>'>Pendaftar</a></li>
-      <li><a  href='<?php echo base_url('index.php/artikel')?>' class='artikel'>Artikel</a></li>
-      <li><a href='<?php echo base_url('index.php/murid')?>'>Murid</a></li>
-      <li><a href='#'>Guru</a></li>
-      <li><a href='<?php echo base_url('index.php/AdminUtama/aksiLogout'); ?>'>Logout</a></li>
-    </ul>
-  </div>
+
   <div id='content'>
     <table border='1' align='center'>
       <tr>
@@ -35,7 +27,7 @@
           echo "<td align='center'>".$data->agama_murid."</td>";
           echo "<td align='center'>".$data->wali_murid."</td>";
           echo "<td width='20%' align='center'><img width='50%' src='".$data->foto."'/></td>";
-          echo "<td align='center'><a href='./murid/edit/$data->NIS'>Edit</a>";
+          echo "<td align='center'><a href='./edit/$data->NIS'>Edit</a></td>";
           echo "</tr>";
         }
        ?>
@@ -60,12 +52,29 @@ table {
   top: 20%;
   left: 50%;
   transform: translate(-50%, 0%);
-  width: 80%;
-  position: fixed;
+  width: 90%;
+  position: absolute;
+  font-family: fantasy;
+}
 
+table th{
+  background-color: #5a5a5a;
+  color : white;
+}
+tr{
+  background-color: #fafafa;
+  transition: all 0.2s ease-in-out;
+}
+tr:nth-child(even){
+  background-color: #f2f2f2;
+  transition: all 0.2s ease-in-out;
 }
 
 th, td{
   padding : 4px;
+  border-bottom : 1px solid #000;
+}
 
+tr:hover{
+  background-color: #E4F1FE;
 }
