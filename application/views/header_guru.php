@@ -1,7 +1,7 @@
 <div id='container-side'>
   <div id='side'>
     <div class='title'>
-      <h1>Siskoh</h1>
+      <h1>Sistem Sekolah</h1>
     </div>
     <div class='profile'>
       <div class="foto" style="background-image: url(<?php echo $data['foto']; ?>);"></div>
