@@ -14,7 +14,7 @@
           echo "<tr>";
           echo "<td align='center'>".$data->NIP."</td>";
           echo "<td align='center'>".$data->NamaGuru."</td>";
-          echo "<td align='center'>".$data->guruPelajaran."</td>";
+          echo "<td align='center'>".$data->kode_pelajaran."</td>";
           echo "<td align='center'>".$data->alamat."</td>";
           echo "<td width='20%' align='center'><img width='50%' src='".$data->foto."'/></td>";
           echo "<td align='center'><a href='./ke_editGuru/$data->NIP'>Edit</a></td>";

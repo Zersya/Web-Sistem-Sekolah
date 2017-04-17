@@ -40,20 +40,16 @@
     <div id='container'>
       <table border='0'>
       <?php
-        $pelajaran = array(
-          ''            => 'Pilih Pelajaran',
-          'B.Indonesia'  => 'Bahasa Indonesia',
-          'Matematika'  => 'Matematika',
-          'B.Inggris'    => 'Bahasa Inggris'
-        );
+        foreach($list as $l){
+          $arrPelajaran[] = array($l['kode_pelajaran'] => $l['nama_pelajaran']);
+        }
 
         echo form_open_multipart('', array('id' => 'formTambah'));
         echo "<tr>";
         echo "<tr><td colspan='2'><h2>Tambah Guru</td></tr>";
         echo "<tr><td>Masukan NIP</td><td>".form_input(array('name' => 'nip', 'placeholder' => 'Masukan NIP', 'class' => 'input'))."</td>";
         echo "<tr><td>Masukan Nama</td><td>".form_input(array('name' => 'nama', 'placeholder' => 'Masukan Nama', 'class' => 'input'))."</td>";
-        echo "<tr><td>Pilih Pelajaran</td><td>".form_dropdown('pelajaran', $pelajaran,'', array('class' => 'input'))."</td>";
-        //echo "<tr><td>Masukan Tanggal Lahir</td><td>".form_input(array('name' => 'nama','type' => 'date', 'placeholder' => 'Masukan Tanggal Lahir', 'class' => 'input'))."</td>";
+        echo "<tr><td>Pilih Pelajaran</td><td>".form_dropdown('pelajaran', $arrPelajaran,'', array('class' => 'input'))."</td>";
         echo "<tr><td>Masukan Alamat</td><td>".form_input(array('name' => 'alamat', 'placeholder' => 'Masukan Alamat', 'class' => 'input'))."</td>";
         echo "<tr><td>Foto</td><td>".form_input(array('name' => 'foto', 'type' => 'file', 'class' => 'input'))."</td>";
         echo "<tr><td colspan='2'>".form_submit(array('name' => 'submit', 'class' => 'submit'), 'Tambah')."</td></tr>";

@@ -30,6 +30,7 @@
       $arrNoDaftar = array('noDaftar' => $no);
       $vertifikasi = $this->m_admin->setVertifikasi($arrNoDaftar);
 
+      $this->load->view('header_admin');
       $this->load->view('v_vertivikasi', array('data' => $vertifikasi[0]));
     }
 
@@ -45,8 +46,10 @@
     }
 
     function ke_guru(){
-      $this->load->view('header_admin');
-      $this->load->view('v_tambahGuru');
+        $list   = $this->m_admin->arrData('pelajaran', '*');
+        $dataView = array('list' => $list);
+        $this->load->view('header_admin');
+        $this->load->view('v_tambahGuru', $dataView);
     }
 
     function aksi_logout(){
@@ -88,8 +91,11 @@ function aksi_vertifikasi(){
     'nis' => $this->input->post('nis'),
     'Nama_murid' => $this->input->post('nama'),
     'angkatan_murid' => $this->input->post('angkatan'),
+    'kelas' => $this->input->post('kelas'),
+    'jurusan' => $this->input->post('jurusan'),
     'agama_murid' => $this->input->post('agama'),
     'alamat_murid' => $this->input->post('alamat'),
+    'Jenis_kelamin' => $this->input->post('jenisKelamin'),
     'wali_murid' => $this->input->post('wali'),
     'foto' => $this->input->post('foto'),
   );
@@ -188,9 +194,6 @@ function aksi_vertifikasi(){
 
           $this->load->view('v_listGuru', $guru);
         }
-        function ke_tambah(){
-          $this->load->view('v_tambahGuru');
-        }
         function ke_editGuru($nip){
           $where  = array('nip' => $nip);
           $data   = $this->m_admin->whereData('guru', $where);
@@ -223,14 +226,20 @@ function aksi_vertifikasi(){
           $dataGuru = array(
             'NIP'           => $this->input->post('nip'),
             'NamaGuru'      => $this->input->post('nama'),
-            'guruPelajaran' => $this->input->post('pelajaran'),
+            'kode_pelajaran'=> $this->input->post('pelajaran'),
             'alamat'        => $this->input->post('alamat'),
             'foto'          => $this->upload('foto', $this->input->post('nip'))
+          );
+          $dataAkun = array(
+            'NIP'           => $this->input->post('nip'),
+            'username_guru' => $this->input->post('nama'),
+            'password_guru' => md5($this->input->post('nip'))
           );
 
           $insert     = $this->m_admin->insertData('guru', $dataGuru);
           if($insert){
             echo "Berhasil ditambahkan";
+            $this->m_admin->insertData('akun_guru', $dataAkun);
           }else{
             echo "Gagal ditambahkan";
           }
@@ -269,7 +278,7 @@ function aksi_vertifikasi(){
 
         $insert   = $this->m_admin->insertData('pelajaran', $data);
         if($insert){
-          redirect(base_url('index.php/admin/ke_pelajaran'));
+          echo "Berhasil Ditambahkan";
         }
       }
 

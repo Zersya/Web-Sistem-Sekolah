@@ -4,7 +4,9 @@
    */
   class m_admin extends CI_Model
   {
-
+      function scan_profil($query){
+        return $this->db->query($query);
+      }
       function insertData($table, $data){
         return $this->db->insert($table, $data);
       }
@@ -18,14 +20,17 @@
 
         return $this->db->get()->result();
       }
-
+      function cekData($table, $where){
+        $this->db->select('*');
+        return $this->db->get_where($table, $where);
+      }
       function arrData($table,$select){
         $this->db->select($select);
         $this->db->from($table);
 
         return $this->db->get()->result_array();
       }
-      
+
       function listData($table, $select){
         $this->db->select($select);
         $this->db->from($table);
@@ -33,8 +38,8 @@
         return $this->db->get()->result();
       }
 
-      function updateData($pk, $value, $table){
-        $this->db->where($pk);
+      function updateData($set, $value, $table){
+        $this->db->where($set);
         return $this->db->update($table, $value);
       }
 

@@ -18,7 +18,7 @@ class LoginGuru extends CI_Controller
       echo "Harap isi Username dan Password";
     }else{
       $username = $this->input->post('username');
-      $password = $this->input->post('password');
+      $password = md5($this->input->post('password'));
 
       $where = array(
         'username_guru' => $username,
