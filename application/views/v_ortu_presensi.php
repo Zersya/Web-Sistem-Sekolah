@@ -1,6 +1,6 @@
 <?php if($this->session->statusWali){?>
 <head>
-  <title>Nilai</title>
+  <title>Presensi Murid</title>
 </head>
 <link rel='stylesheet' type="text/css" href='<?php echo base_url('css/style.css');?>'/>
 <body>
@@ -9,6 +9,7 @@
 			<li> <a href='<?php echo base_url('index.php/ortu/ke_list_presensi');?>'>Presensi</a></li>
 			<li> <a href='<?php echo base_url('index.php/ortu/ke_list_nilai');?>'>Lihat Nilai</a></li>
 			<li> <a href='<?php echo base_url('index.php/ortu/logout');?>'>Logout</a></li>
+			
 		</ul>
 	</div>
   <div id='content'>
@@ -16,26 +17,20 @@
       <tr>
         <th>No</th>
         <th>NIS</th>
+        <th>Tanggal</th>
         <th>NIP</th>
-        <th>Kode Pelajaran</th>
-        <th>Uas</th>
-        <th>UTS</th>
-        <th>Quis 1</th>
-        <th>Quis 2</th>
-		<th>Quis 3</th>
+        <th>Materi</th>
+        <th>Status</th>
       </tr>
       <?php
-        foreach($nilai as $data){
+        foreach($presensi as $data){
           echo "<tr>";
           echo "<td align='center'>".$data->no."</td>";
           echo "<td align='center'>".$data->NIS."</td>";
+          echo "<td align='center'>".$data->Tanggal."</td>";
           echo "<td align='center'>".$data->NIP."</td>";
-          echo "<td align='center'>".$data->kode_pelajaran."</td>";
-          echo "<td align='center'>".$data->UAS."</td>";
-          echo "<td align='center'>".$data->UTS."</td>";
-		  echo "<td align='center'>".$data->Quis1."</td>";
-		  echo "<td align='center'>".$data->Quis2."</td>";
-		  echo "<td align='center'>".$data->Quis3."</td>";
+          echo "<td align='center'>".$data->Materi."</td>";
+          echo "<td align='center'>".$data->Status."</td>";
           echo "</tr>";
         }
        ?>
