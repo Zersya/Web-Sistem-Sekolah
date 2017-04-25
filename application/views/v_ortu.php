@@ -21,12 +21,15 @@
       <?php
         foreach($murid as $data){
           echo "<tr>";
-          echo "<td align='center'>".$data->NIS."</td>";
-          echo "<td align='center'>".$data->Nama_murid."</td>";
-          echo "<td align='center'>".$data->angkatan_murid."</td>";
-          echo "<td align='center'>".$data->alamat_murid."</td>";
-          echo "<td align='center'>".$data->agama_murid."</td>";
-          echo "<td align='center'>".$data->wali_murid."</td>";
+          echo "<td align='center'>".$data->No."</td>";
+          echo "<td align='center'>".$data->Nis."</td>";
+          echo "<td align='center'>".$data->Nip."</td>";
+          echo "<td align='center'>".$data->Kode_Pelajaran."</td>";
+          echo "<td align='center'>".$data->UAS."</td>";
+          echo "<td align='center'>".$data->UTS."</td>";
+		  echo "<td align='center'>".$data->Quis1."</td>";
+		  echo "<td align='center'>".$data->Quis2."</td>";
+		  echo "<td align='center'>".$data->Quis3."</td>";
           echo "<td width='20%' align='center'><img width='50%' src='".$data->foto."'/></td>";
           echo "<td align='center'><a href='./edit/$data->NIS'>Edit</a></td>";
           echo "</tr>";
