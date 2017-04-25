@@ -15,5 +15,9 @@ class m_login extends CI_Model
     $this->db->select('nis, username_murid, password_murid');
     return $this->db->get_where($table, $where);
   }
+  function cek_loginOrtu($table, $where){
+    $this->db->select('NoInduk, NIS, username, password');
+    return $this->db->get_where($table, $where);
+  }
 }
  ?>

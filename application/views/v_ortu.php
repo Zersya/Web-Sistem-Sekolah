@@ -1,4 +1,4 @@
-<?php if($this->session->statusAdmin){?>
+<?php if($this->session->statusWali){?>
 <head>
   <title>Admin Panel</title>
 </head>
@@ -19,12 +19,12 @@
 		<th>Quis 3</th>
       </tr>
       <?php
-        foreach($murid as $data){
+        foreach($nilai as $data){
           echo "<tr>";
           echo "<td align='center'>".$data->No."</td>";
-          echo "<td align='center'>".$data->Nis."</td>";
-          echo "<td align='center'>".$data->Nip."</td>";
-          echo "<td align='center'>".$data->Kode_Pelajaran."</td>";
+          echo "<td align='center'>".$data->NIS."</td>";
+          echo "<td align='center'>".$data->NIP."</td>";
+          echo "<td align='center'>".$data->kode_pelajaran."</td>";
           echo "<td align='center'>".$data->UAS."</td>";
           echo "<td align='center'>".$data->UTS."</td>";
 		  echo "<td align='center'>".$data->Quis1."</td>";

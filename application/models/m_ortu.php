@@ -1,5 +1,6 @@
 <?php
-
+class m_Ortu extends CI_Model
+{
 function listNilai($where){
         $this->db->select('*');
         $this->db->from('nilai');
@@ -10,4 +11,5 @@ function listNilai($where){
 	  function scan_profil($query){
         return $this->db->query($query);
       }
+}
 ?>

@@ -2,7 +2,7 @@
   /**
    *
    */
-  class Admin extends CI_Controller
+  class Ortu extends CI_Controller
   {
 
     function __construct()
@@ -13,19 +13,24 @@
     }
 
     function index(){
-      $this->load->view('v_loginAdmin');
+		$NIS=$this->session->NIS;
+		$nis = $this->m_ortu->scan_profil("select NoInduk, nis from wali_murid");
+		$where = array ('NIS' => $NIS);
+        $nilai    = array('nilai' => $this->m_ortu->listNilai($where));
+
+      $this->load->view('v_ortu',$nilai);
     }
 
 
 	function ke_list_nilai(){
-		  $nis = $this->m_ortu->scan_profil("select nis from wali_murid");
+		  $nis = $this->m_ortu->scan_profil("select NoInduk, nis from wali_murid");
 		  $where = array ('nis' => $nis);
           $nilai    = array('nilai' => $this->m_ortu->listNilai($where));
 
           $this->load->view('v_ortu', $nilai);
 		
     }
-	function getDataOrtu(){
+	function getDataNilai(){
       $where = $this->session->nip;
       $query = $this->m_ortu->scan_profil("select no, NIS, NIP, kode_pelajaran, UAS, UTS, Quis1, Quis2, Quis3 from nilai where NIP = '".$where."'");
 
@@ -39,7 +44,7 @@
 		  'UTS'  => $row->UTS,
 		  'Quis1'  => $row->Quis1,
 		  'Quis2'  => $row->Quis2,
-		  'Quis3'  => $row->Quis3,
+		  'Quis3'  => $row->Quis3
         );
         $data = array('data' => $dataNilai);
       }

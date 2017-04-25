@@ -23,6 +23,8 @@
         <a href="<?php echo base_url('index.php/loginGuru'); ?>">Login Guru</a>
         <a><b>|</a></b>
         <a href="<?php echo base_url('index.php/loginMurid'); ?>">Login Murid</a>
+		<a><b>|</a></b>
+        <a href="<?php echo base_url('index.php/loginOrtu'); ?>">Login Wali Murid</a>
     </div>
     <div id="welcomeContainer" class="daftar">
         <a href="<?php echo base_url('index.php/daftar'); ?>">Mendaftar Sekolah</a>
