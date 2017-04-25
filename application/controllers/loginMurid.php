@@ -1,4 +1,5 @@
-<?php /**
+<?php 
+/**
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -18,7 +19,7 @@ class LoginMurid extends CI_Controller
       echo "Harap isi Username dan Password";
     }else{
       $username = $this->input->post('username');
-      $password = $this->input->post('password');
+      $password = md5($this->input->post('password'));
 
       $where = array(
         'username_murid' => $username,
