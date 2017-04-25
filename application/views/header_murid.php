@@ -13,8 +13,8 @@
         <li><a href='<?php echo base_url('index.php/beranda'); ?>'>Beranda</a></li>
         <li><a href='<?php echo base_url('index.php/beranda/presensi'); ?>'>Presensi</a></li>
         <li><a href='<?php echo base_url('index.php/beranda/nilai'); ?>'>Nilai</a></li>
-		<li><a href='<?php echo base_url('index.php/beranda/tugas'); ?>'>Tugas</a></li>
-		<li><a href='<?php echo base_url('index.php/beranda/materi'); ?>'>Materi</a></li>
+		<li><a href='<?php echo base_url('index.php/beranda/guru'); ?>'>Lihat Guru pengajar</a></li>
+		<li><a href='<?php echo base_url('index.php/beranda/pelajaran'); ?>'>Mata Pelajaran</a></li>
         <li><a href='<?php echo base_url('index.php/loginMurid'); ?>'>Keluar</a></li>
       </ul>
     </div>
