@@ -11,11 +11,11 @@
         e.preventDefault();
         $.ajax({
           'type': 'POST',
-          'url': base_url+"/LoginMurid/aksi_login",
+          'url': base_url+"/loginMurid/aksi_login",
           'data': $(this).serialize(),
           'success': function(data){
             if(data == "LoginMurid"){
-              $('#notif').html(data);
+              window.location=base_url+"/beranda";
             }
             else{
               $('#notif').html(data);
