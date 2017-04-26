@@ -14,7 +14,7 @@
           xmlHttp.open("GET", url, true);
           xmlHttp.send();
         }else{
-          document.getElementById('notif').innerHTML = "Masukan Materi Dahulu";
+          document.getElementById('notif').innerHTML = "<center>Masukan Materi Dahulu</center>";
         }
 
       }

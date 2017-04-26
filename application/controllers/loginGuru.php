@@ -28,6 +28,8 @@ class LoginGuru extends CI_Controller
       $cek = $this->m_login->cek_loginGuru("akun_guru", $where);
 
       if($cek->num_rows() > 0){
+
+
         foreach ($cek->result() as $row) {
           $nip = $row->nip;
         }
@@ -36,10 +38,12 @@ class LoginGuru extends CI_Controller
           'statusGuru' => "login"
         );
         $this->session->set_userdata($data_session);
-        echo "LoginGuru";
+        $result = "LoginGuru";
+        echo $result;
         // echo $this->session->nis;
       }else{
-        echo "Username dan Password tidak Cocok";
+        $result = "Gagal";
+        echo $result;
       }
     }
   }

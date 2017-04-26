@@ -15,6 +15,7 @@
         return $this->db->delete($table, $value);
       }
       function whereData($table, $where){
+        $this->db->select('*');
         $this->db->where($where);
         $this->db->from($table);
 

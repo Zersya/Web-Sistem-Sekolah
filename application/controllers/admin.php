@@ -100,8 +100,16 @@ function aksi_vertifikasi(){
     'foto' => $this->input->post('foto'),
   );
 
+  $wali = array(
+    'NIS'     => $siswa['nis'],
+    'NamaWali'=> $siswa['wali_murid'],
+    'Username'=> strtolower($siswa['wali_murid']),
+    'Password'=> md5($siswa['nis']),
+  );
+
   $insert = $this->m_admin->insertData('murid', $siswa);
-  if($insert){
+  $insertWali = $this->m_admin->insertData('wali_murid', $wali);
+  if($insert && $insertWali){
     $dataDelete = array('noDaftar' => $this->input->post('noDaftar'));
     $dataAkun   = array(
       'nis'             => $siswa['nis'],
@@ -110,9 +118,27 @@ function aksi_vertifikasi(){
     );
     $this->m_admin->insertData('akun_murid', $dataAkun);
     $this->m_admin->deleteData('pendaftaran', $dataDelete);
+
+    $this->arr2Json($siswa['kelas']);
   }
   redirect(base_url('/index.php/admin/ke_pendaftar'));
 }
+
+function arr2Json($kelas){
+    $kelasWhere = array(
+      "Kelas" => $kelas
+    );
+     $result = $this->m_admin->whereData('murid', $kelasWhere);
+
+     foreach($result as $res){
+       $data[] = $res;
+       $json = json_encode(array('Siswa' => $data));
+       file_put_contents("./resources/dataSiswa".$kelas.".json", $json);
+     }
+
+   }
+
+
     //artikel
 
   function viewna(){

@@ -31,7 +31,7 @@
       echo "<td>".$data->Jenis_kelamin."</td>";
       echo "<td>".$data->wali_murid."</td>";
       echo "<td align='center'><img width='50' src='".$data->foto."'></td>";
-
+      echo "<td><a href='./pindahInputNilai/".$data->NIS."'>Input Nilai</td>";
       echo "</tr>";
     }
 

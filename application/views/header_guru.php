@@ -13,8 +13,6 @@
         <li><a href='<?php echo base_url('index.php/guruutama'); ?>'>Beranda</a></li>
         <li><a href='<?php echo base_url('index.php/guruutama/presensi'); ?>'>Presensi</a></li>
         <li><a href='<?php echo base_url('index.php/guruutama/nilai'); ?>'>Nilai</a></li>
-        <li><a href='#'>Belajar</a></li>
-        <li><a href='#'>Profil</a></li>
         <li><a href='<?php echo base_url('index.php/guruutama/logout'); ?>'>Keluar</a></li>
       </ul>
     </div>
