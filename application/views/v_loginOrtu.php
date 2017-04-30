@@ -75,7 +75,7 @@
     position: fixed;
     border: 1px solid #fff;
     margin-top: 20px;
-    background-color: #4396b7;
+    background-color: #FF1493;
     border-radius: 5%;
     border-width: 5px;
     border-color: #ecf0f1;
