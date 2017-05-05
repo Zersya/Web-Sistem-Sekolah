@@ -39,6 +39,20 @@
         return $this->db->get()->result();
       }
 
+	  function cariList($where){
+        $this->db->select('*');
+        $this->db->from('presensi');
+		$this->db->where($where);
+
+        return $this->db->get()->result();
+		}
+		function cariNilai($where){
+        $this->db->select('*');
+        $this->db->from('nilai');
+		$this->db->where($where);
+
+        return $this->db->get()->result();
+		}
       function updateData($set, $value, $table){
         $this->db->where($set);
         return $this->db->update($table, $value);

@@ -5,7 +5,7 @@
     </div>
     <div class='profile'>
       <div class="foto" style="background-image: url(<?php echo $data['foto']; ?>);"></div>
-      <a>Nama: <?php echo $data['nama_murid']; ?></a><br>
+      <a>Nama Murid : <?php echo $data['nama_murid']; ?></a><br>
       <a>Nisn : <?php echo $data['nis'] ?></a>
     </div>
     <div class='navigation'>
@@ -15,7 +15,7 @@
         <li><a href='<?php echo base_url('index.php/beranda/nilai'); ?>'>Nilai</a></li>
 		<li><a href='<?php echo base_url('index.php/beranda/guru'); ?>'>Lihat Guru pengajar</a></li>
 		<li><a href='<?php echo base_url('index.php/beranda/pelajaran'); ?>'>Mata Pelajaran</a></li>
-        <li><a href='<?php echo base_url('index.php/loginMurid'); ?>'>Keluar</a></li>
+        <li><a href='<?php echo base_url('index.php/beranda/logout'); ?>'>Keluar</a></li>
       </ul>
     </div>
   </div>

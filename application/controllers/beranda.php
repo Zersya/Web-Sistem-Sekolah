@@ -12,11 +12,12 @@
 	  $this->load->model('m_admin'); 
     }
 
-    function index(){
+    function index(){	
 	  $this->load->view('header_murid', $this->getDataMurid()); 
       $this->load->view('v_muridutama_beranda');
     }
 	function getDataMurid(){
+	  
       $where = $this->session->nis;
       $query = $this->m_admin->scan_profil("select Nis, Nama_murid, foto from murid where nis = '".$where."'");
       foreach ($query->result() as $row) {
@@ -31,18 +32,22 @@
       return $data;
     }
 	function presensi(){
-      $result = $this->m_admin->listData('presensi', '*');
-      $data = array('presensi' => $result );
+      $nresult=$this->session->nis;
+		
+		$where = array ('nis' => $nresult);
+        $data = array('presensi' => $this->m_admin->cariList($where));
 
-      $this->load->view('header_Murid', $this->getDataMurid());
-      $this->load->view('v_tampilpresensi', $data);
+	  $this->load->view('header_Murid', $this->getDataMurid());
+      $this->load->view('v_tampilpresensi',$data);
     }
 	function nilai(){
-      $result = $this->m_admin->listData('nilai', '*');
-      $data = array('nilai' => $result );
+	  $nresult=$this->session->nis;
+		
+		$where = array ('nis' => $nresult);
+        $data = array('nilai' => $this->m_admin->cariNilai($where));
 
-      $this->load->view('header_Murid', $this->getDataMurid());
-      $this->load->view('v_tampilnilai', $data);
+	  $this->load->view('header_Murid', $this->getDataMurid());
+      $this->load->view('v_tampilnilai',$data);
     }
 	function guru(){
       $result = $this->m_admin->listData('guru', '*');
@@ -57,6 +62,15 @@
 
       $this->load->view('header_Murid', $this->getDataMurid());
       $this->load->view('v_tampilpelajaran', $data);
+    }
+	function logout(){
+      $data = array(
+      'NIS' => '',
+      'statusMurid' => '');
+      $this->session->unset_userdata($data);
+      $this->session->sess_destroy();
+
+      redirect(base_url('index.php/loginMurid'));
     }
   }
  ?>
